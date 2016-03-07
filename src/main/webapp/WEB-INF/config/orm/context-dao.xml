@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       ">
+
+    <import resource="context-hibernate.xml"></import>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--DAOs-->
+    <bean id="MenuDAO" class="com.silvermining.demo.dao.impl.MenuDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+
+    <bean id="PerfilDAO" class="com.silvermining.demo.dao.impl.PerfilDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+
+    <bean id="RolDAO" class="com.silvermining.demo.dao.impl.RolDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+
+    <bean id="UsuarioDAO" class="com.silvermining.demo.dao.impl.UsuarioDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+
+    <bean id="UsuarioMayorDAO" class="com.silvermining.demo.dao.impl.UsuarioMayorDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate" />
+    </bean>
+</beans>

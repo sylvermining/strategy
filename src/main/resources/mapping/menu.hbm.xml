@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.silvermining.demo.entity.Menu"
+           table="MENU" schema="TESTING">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" scale="0" />
+            <generator class="sequence">
+                <param name="sequence">seq_menu</param>
+            </generator>
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" />
+        </property>
+        <set name="listaMenuHijos" table="MENU" inverse="true"
+             lazy="true" fetch="select">
+            <key>
+                <column name="PADREID" />
+            </key>
+            <one-to-many class="com.silvermining.demo.entity.Menu" />
+        </set>
+        <set name="listaRoles" table="ROL"
+             inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="MENUID" not-null="true" />
+            </key>
+            <many-to-many class="com.silvermining.demo.entity.Rol">
+                <column name="ROLID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
