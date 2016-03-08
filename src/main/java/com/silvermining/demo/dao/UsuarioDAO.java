@@ -7,4 +7,6 @@ import com.silvermining.demo.entity.Usuario;
  * Created by dolorierp on 06/03/16.
  */
 public interface UsuarioDAO extends GenericDAO<Usuario, Long> {
+
+    Usuario getUsuarioPorNombre(String nombre);
 }

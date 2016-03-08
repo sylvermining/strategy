@@ -7,4 +7,5 @@ import com.silvermining.demo.wrapper.vo.UsuarioVO;
  */
 public interface UsuarioService {
     boolean registrarUsuario(UsuarioVO usuario);
+    UsuarioVO getUsuario(String nombre);
 }

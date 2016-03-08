@@ -10,6 +10,14 @@ public class UsuarioVO {
     private String password;
     private String profesion;
 
+    public UsuarioVO() {}
+    public UsuarioVO(UsuarioVOBuilder builder) {
+        this.id = builder.id;
+        this.nombre = builder.nombre;
+        this.password = builder.password;
+        this.profesion = builder.profesion;
+    }
+
     public Long getId() {
         return id;
     }
@@ -50,5 +58,32 @@ public class UsuarioVO {
                 ", password='" + password + '\'' +
                 ", profesion='" + profesion + '\'' +
                 '}';
+    }
+
+    public static class UsuarioVOBuilder {
+        private Long id;
+        private String nombre;
+        private String password;
+        private String profesion;
+
+        public UsuarioVOBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+        public UsuarioVOBuilder nombre(String nombre) {
+            this.nombre = nombre;
+            return this;
+        }
+        public UsuarioVOBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+        public UsuarioVOBuilder profesion(String profesion) {
+            this.profesion = profesion;
+            return this;
+        }
+        public UsuarioVO builder() {
+            return new UsuarioVO(this);
+        }
     }
 }

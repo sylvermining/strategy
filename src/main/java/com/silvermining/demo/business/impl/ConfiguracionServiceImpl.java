@@ -1,4 +1,4 @@
-package com.silvermining.demo.business.strategy;
+package com.silvermining.demo.business.impl;
 
 import com.silvermining.demo.business.ConfiguracionService;
 

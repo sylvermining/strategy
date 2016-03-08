@@ -8,4 +8,9 @@ import com.silvermining.demo.entity.UsuarioMayor;
  * Created by dolorierp on 06/03/16.
  */
 public class UsuarioMayorDAOImpl extends GenericDAOImpl<UsuarioMayor, Long> implements UsuarioMayorDAO {
+
+    @Override
+    public UsuarioMayor getUsuarioPorNombre(String nombre) {
+        return null;
+    }
 }
