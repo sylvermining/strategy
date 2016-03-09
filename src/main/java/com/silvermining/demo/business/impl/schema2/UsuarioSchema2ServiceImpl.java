@@ -5,6 +5,7 @@ import com.silvermining.demo.dao.UsuarioMayorDAO;
 import com.silvermining.demo.entity.Usuario;
 import com.silvermining.demo.entity.UsuarioMayor;
 import com.silvermining.demo.wrapper.vo.UsuarioVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UsuarioSchema2ServiceImpl
         extends UsuarioServiceImpl {
 
+    @Autowired
     UsuarioMayorDAO usuarioMayorDAO;
 
     @Override

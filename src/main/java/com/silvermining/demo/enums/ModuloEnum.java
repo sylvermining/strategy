@@ -15,4 +15,5 @@ public enum ModuloEnum {
         this.codigo = codigo;
         this.nombre = nombre;
     }
+
 }

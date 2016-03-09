@@ -4,9 +4,11 @@ import com.silvermining.demo.enums.ModuloEnum;
 import com.silvermining.demo.strategy.ModuloFactory;
 import com.silvermining.demo.strategy.ServiceManager;
 import com.silvermining.demo.wrapper.vo.UsuarioVO;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -17,19 +19,33 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations= "classpath:config/context.xml")
 public class UsuarioServiceTest {
 
-    private UsuarioService usuarioService;
+    @Autowired
     private ModuloFactory moduloFactory;
 
     @Test
     @Ignore
     public void getUsuarioTest() {
-        UsuarioVO usuarioVO = moduloFactory.getUsuarioService(ModuloEnum.USUARIO).getUsuario("");
+        try {
+            UsuarioVO usuarioVO = moduloFactory.getUsuarioService(ModuloEnum.USUARIO).getUsuario("abregup");
+            Assert.assertNotNull(usuarioVO);
+        } catch (Exception Oo) {
+            Oo.printStackTrace();
+            Assert.fail();
+        }
+
     }
 
     @Test
     @Ignore
     public void getUsuarioMayorTest() {
-
+        try {
+            UsuarioVO usuarioVO = moduloFactory.getUsuarioService(ModuloEnum.USUARIO_MAYOR).getUsuario("dolorierp");
+            Assert.assertNotNull(usuarioVO);
+        } catch (Exception oO) {
+            oO.printStackTrace();
+            Assert.fail();
+        }
     }
+
 
 }

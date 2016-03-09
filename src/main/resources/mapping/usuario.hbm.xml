@@ -26,4 +26,10 @@
             </many-to-many>
         </set>
     </class>
+    <sql-query name="getUsuarioPorNombre">
+        <return alias="Usuario" class="com.silvermining.demo.entity.Usuario"></return>
+        <![CDATA[
+            SELECT * FROM usuario WHERE name = :nombre
+        ]]>
+    </sql-query>
 </hibernate-mapping>

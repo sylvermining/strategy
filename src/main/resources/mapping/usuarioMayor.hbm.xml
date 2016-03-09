@@ -15,7 +15,7 @@
         </property>
         <many-to-one name="usuario" class="com.silvermining.demo.entity.Usuario"
                      fetch="select">
-            <column name="USUARIO" not-null="true" />
+            <column name="USERID" not-null="true" />
         </many-to-one>
         <set name="listaPerfiles" table="PERFIL"
              inverse="false" lazy="true" fetch="select" cascade="all">
@@ -27,4 +27,29 @@
             </many-to-many>
         </set>
     </class>
+
+    <resultset name="usuarioMayorUsuario">
+        <return alias="usuarioMayor"
+                class="com.silvermining.demo.entity.UsuarioMayor"></return>
+        <return-join alias="usuario"
+                     property="usuarioMayor.usuario"></return-join>
+    </resultset>
+    <sql-query name="getUsuarioMayorPorNombre"
+               resultset-ref="usuarioMayorUsuario">
+        <![CDATA[
+            SELECT
+               um.ID as {usuarioMayor.id},
+               um.PROFESION as {usuarioMayor.profesion},
+               um.USERID as {usuarioMayor.usuario},
+               u.ID AS {usuario.id},
+               u.NAME AS {usuario.nombre},
+               u.PASSWORD AS {usuario.password}
+            FROM
+                usuario_mayor um
+            JOIN
+                usuario u ON u.id = um.userid
+            WHERE
+                um.profesion = :nombre
+        ]]>
+    </sql-query>
 </hibernate-mapping>
