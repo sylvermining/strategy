@@ -5,19 +5,27 @@
 <head>
     <title>demo</title>
 </head>
-<body>
-    <div id="logueo">
-        <h1>Logueo</h1>
-        <fieldset>
-            <form>
-                <label>Usuario</label>
-                <input type="text" value="" />
-                <label>Password</label>
-                <input type="password" />
-                <input type="button" value="Iniciar sesion" />
-            </form>
-            <a href="/registro">Cambiar pass</a>
-        </fieldset>
+<body ng-app="myApp">
+    <div ng-controller="registroController as vm">
+        <form>
+            <p>
+                <label>NickName</label>
+                <input type="nombre" ng-model="vm.nombre" />
+            </p>
+            <p>
+                <label>Nuevo Password</label>
+                <input type="password" ng-model="vm.password" />
+            </p>
+            <p>
+                <label>Repite Password</label>
+                <input type="password" ng-model="vm.repeatPassword" />
+            </p>
+            <input type="button" value="registrarse"
+                    ng-click="vm.registrar()"/>
+        </form>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="resources/js/base.js"></script>
 </body>
 </html>

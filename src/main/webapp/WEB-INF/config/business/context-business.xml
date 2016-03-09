@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       ">
+
+    <context:component-scan base-package="com.silvermining.demo.business" />
+    <context:component-scan base-package="com.silvermining.demo.strategy" />
+
+    <bean id="usuarioServiceManager" class="com.silvermining.demo.strategy.ServiceManager">
+        <property name="usuarioService" ref="usuarioSchema1ServiceImpl"></property>
+        <property name="configuracionService" ref="configuracionSchema1ServiceImpl"></property>
+    </bean>
+
+    <bean id="usuarioMayorServiceManager" class="com.silvermining.demo.strategy.ServiceManager">
+        <property name="usuarioService" ref="usuarioSchema2ServiceImpl"></property>
+        <property name="configuracionService" ref="configuracionSchema2ServiceImpl"></property>
+    </bean>
+
+    <bean id="moduloFactoryImpl" class="com.silvermining.demo.strategy.ModuloFactoryImpl">
+        <property name="serviceManager">
+            <map>
+                <entry key="USUARIO" value-ref="usuarioServiceManager"/>
+                <entry key="USUARIO_MAYOR" value-ref="usuarioMayorServiceManager" />
+            </map>
+        </property>
+    </bean>
+</beans>

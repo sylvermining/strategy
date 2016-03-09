@@ -16,4 +16,20 @@ public enum ModuloEnum {
         this.nombre = nombre;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public static ModuloEnum getModuloPorCodigo(String moduloCode) {
+        for(ModuloEnum modulo : ModuloEnum.values()) {
+            if(modulo.getCodigo().equals(moduloCode)) {
+                return modulo;
+            }
+        }
+        return ModuloEnum.USUARIO;
+    }
 }
