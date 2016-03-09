@@ -19,7 +19,7 @@ public class UsuarioMayorDAOTest {
     public void getUsuarioMayorTest() {
         try {
             UsuarioMayor usuario = usuarioMayorDAO
-                    .getUsuarioPorNombre("ingsistemas");
+                    .getUsuarioPorNombre("dolorierp");
             Assert.assertNotNull(usuario);
         } catch (Exception oO) {
             oO.printStackTrace();

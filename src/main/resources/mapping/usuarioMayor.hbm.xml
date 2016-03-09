@@ -49,7 +49,36 @@
             JOIN
                 usuario u ON u.id = um.userid
             WHERE
-                um.profesion = :nombre
+                u.name = :nombre
         ]]>
     </sql-query>
+
+    <!-- <sql-query name="getUsuarioMayorPorNombre">
+        <return alias="usuarioMayor"
+                class="com.silvermining.demo.entity.UsuarioMayor">
+            <return-property name="id" column="ID"></return-property>
+            <return-property name="profesion" column="PROFESION"></return-property>
+            <return-property name="usuario" column="USERID"></return-property>
+        </return>
+        <return-join alias="usuario" property="usuarioMayor.usuario">
+            <return-property name="id" column="ID"></return-property>
+            <return-property name="nombre" column="NAME"></return-property>
+            <return-property name="password" column="PASSWORD"></return-property>
+        </return-join>
+        <![CDATA[
+            SELECT
+               um.ID as {usuarioMayor.id},
+               um.PROFESION as {usuarioMayor.profesion},
+               um.USERID as {usuarioMayor.usuario},
+               u.ID AS {usuario.id},
+               u.NAME AS {usuario.nombre},
+               u.PASSWORD AS {usuario.password}
+            FROM
+                usuario_mayor um
+            LEFT OUTER JOIN
+                usuario u ON u.id = um.userid
+            WHERE
+                um.profesion = :nombre
+        ]]>
+    </sql-query>-->
 </hibernate-mapping>

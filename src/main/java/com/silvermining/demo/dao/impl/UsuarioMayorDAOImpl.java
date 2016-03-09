@@ -2,6 +2,7 @@ package com.silvermining.demo.dao.impl;
 
 import com.silvermining.demo.dao.UsuarioMayorDAO;
 import com.silvermining.demo.dao.parent.impl.GenericDAOImpl;
+import com.silvermining.demo.entity.Usuario;
 import com.silvermining.demo.entity.UsuarioMayor;
 import org.hibernate.Query;
 
@@ -16,7 +17,7 @@ public class UsuarioMayorDAOImpl extends GenericDAOImpl<UsuarioMayor, Long> impl
     public UsuarioMayor getUsuarioPorNombre(String nombre) {
         Query query = getSession().getNamedQuery("getUsuarioMayorPorNombre")
                 .setString("nombre", nombre);
-        return (UsuarioMayor)query.uniqueResult();
-        //return super.findByPK(1L);
+        List<Object[]> list = query.list();
+        return (UsuarioMayor)list.get(0)[0];
     }
 }
