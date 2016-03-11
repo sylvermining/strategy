@@ -1,5 +1,6 @@
 package com.silvermining.demo.business;
 
+import com.silvermining.demo.entity.Menu;
 import com.silvermining.demo.wrapper.vo.MenuVO;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface MaestroService {
 
-    List<MenuVO> getMenuLista();
+    List<Menu> getMenuLista();
 }

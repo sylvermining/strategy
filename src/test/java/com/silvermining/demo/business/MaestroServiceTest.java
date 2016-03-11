@@ -1,7 +1,9 @@
 package com.silvermining.demo.business;
 
-import com.silvermining.demo.wrapper.vo.MenuVO;
+import com.silvermining.demo.entity.Menu;
 import junit.framework.Assert;
+import org.apache.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,18 @@ import java.util.List;
 @ContextConfiguration(locations= "classpath:config/context.xml")
 public class MaestroServiceTest {
 
+    private static final Logger LOGGER = Logger.getLogger(MaestroServiceTest.class);
+
     @Autowired
     private MaestroService maestroService;
 
     @Test
+    @Ignore
     public void menuListTest() {
         try {
-            List<MenuVO> menuLista = maestroService.getMenuLista();
+            List<Menu> menuLista = maestroService.getMenuLista();
             Assert.assertTrue(!menuLista.isEmpty());
+            LOGGER.info("menu lista size :: " + menuLista.size());
         } catch(Exception oO) {
             oO.printStackTrace();
             Assert.fail();

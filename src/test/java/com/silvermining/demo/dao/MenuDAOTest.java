@@ -34,10 +34,10 @@ public class MenuDAOTest {
         try {
             List<Menu> list = menuDAO.getAll();
             Assert.assertTrue(list.size() > 0);
-           /* for (Menu menu : list) {
-                Set<Menu> sublist = menu.getListaMenuHijos();
-                System.out.println(sublist.size());
-            }*/
+           for (Menu menu : list) {
+                Menu menuPadre = menu.getMenuPadre();
+                System.out.println("menuPadre:: " + menuPadre);
+            }
         } catch(Exception oO) {
             oO.printStackTrace();
             Assert.fail();

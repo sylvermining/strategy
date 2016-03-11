@@ -1,5 +1,7 @@
 package com.silvermining.demo.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,10 +13,17 @@ public class Menu implements Serializable {
 
     private Long id;
     private String nombre;
+    //@JsonIgnore
     private Set<Menu> listaMenuHijos =
             new HashSet<Menu>();
+    @JsonIgnore
     private Set<Rol> listaRoles =
             new HashSet<Rol>();
+
+    @JsonIgnore
+    private Menu menuPadre;
+
+    public Menu() {}
 
     public Long getId() {
         return id;
@@ -48,6 +57,25 @@ public class Menu implements Serializable {
         this.listaRoles = listaRoles;
     }
 
+    public Menu getMenuPadre() {
+        return menuPadre;
+    }
+
+    public void setMenuPadre(Menu menuPadre) {
+        this.menuPadre = menuPadre;
+    }
+
+    public String menuToString() {
+        if(menuPadre != null) {
+            return "menuPadre { id: " +
+                    menuPadre.getId() +
+                    ", nombre: " +
+                    menuPadre.getNombre() +
+                    "}";
+        }
+        return "";
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
@@ -55,6 +83,7 @@ public class Menu implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", listaMenuHijos=" + listaMenuHijos +
                 ", listaRoles=" + listaRoles +
+                ", menuPadre=" + menuToString() +
                 '}';
     }
 }
