@@ -1,11 +1,8 @@
 package com.silvermining.demo.controller;
 
-import com.silvermining.demo.enums.ModuloEnum;
-import com.silvermining.demo.strategy.ModuloFactory;
+import com.silvermining.demo.business.MaestroService;
+import com.silvermining.demo.entity.Menu;
 import com.silvermining.demo.wrapper.vo.MenuVO;
-import com.silvermining.demo.wrapper.vo.PerfilVO;
-import com.silvermining.demo.wrapper.vo.RolVO;
-import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,6 +25,17 @@ public class RestController {
 
     private static final Logger LOGGER =
             Logger.getLogger(RestController.class);
+
+    @Autowired
+    private MaestroService maestroService;
+
+    @RequestMapping(value = "/getMenuLista", method = RequestMethod.GET,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<MenuVO> getMenuLista() {
+        return maestroService.getMenuLista();
+    }
+
 
     /*@Autowired
     ModuloFactory moduloFactory;

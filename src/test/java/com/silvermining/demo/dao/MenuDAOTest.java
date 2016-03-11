@@ -32,8 +32,12 @@ public class MenuDAOTest {
     @Ignore
     public void getListaMenus() {
         try {
-            List list = menuDAO.getAll();
+            List<Menu> list = menuDAO.getAll();
             Assert.assertTrue(list.size() > 0);
+           /* for (Menu menu : list) {
+                Set<Menu> sublist = menu.getListaMenuHijos();
+                System.out.println(sublist.size());
+            }*/
         } catch(Exception oO) {
             oO.printStackTrace();
             Assert.fail();

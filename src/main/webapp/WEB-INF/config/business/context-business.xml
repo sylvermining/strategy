@@ -10,19 +10,19 @@
        ">
 
     <context:component-scan base-package="com.silvermining.demo.business" />
-    <context:component-scan base-package="com.silvermining.demo.strategy" />
+    <context:component-scan base-package="com.silvermining.demo.business.strategy.factory" />
 
-    <bean id="usuarioServiceManager" class="com.silvermining.demo.strategy.ServiceManager">
+    <bean id="usuarioServiceManager" class="com.silvermining.demo.business.strategy.factory.ServiceManager">
         <property name="usuarioService" ref="usuarioSchema1ServiceImpl"></property>
         <property name="configuracionService" ref="configuracionSchema1ServiceImpl"></property>
     </bean>
 
-    <bean id="usuarioMayorServiceManager" class="com.silvermining.demo.strategy.ServiceManager">
+    <bean id="usuarioMayorServiceManager" class="com.silvermining.demo.business.strategy.factory.ServiceManager">
         <property name="usuarioService" ref="usuarioSchema2ServiceImpl"></property>
         <property name="configuracionService" ref="configuracionSchema2ServiceImpl"></property>
     </bean>
 
-    <bean id="moduloFactoryImpl" class="com.silvermining.demo.strategy.ModuloFactoryImpl">
+    <bean id="moduloFactoryImpl" class="com.silvermining.demo.business.strategy.factory.ModuloFactoryImpl">
         <property name="serviceManager">
             <map>
                 <entry key="USUARIO" value-ref="usuarioServiceManager"/>

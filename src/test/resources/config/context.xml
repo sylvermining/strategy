@@ -17,8 +17,6 @@
         </property>
     </bean>
 
-
-    <import resource="orm/context-dao.xml"></import>
     <import resource="business/context-business.xml"></import>
 
 </beans>

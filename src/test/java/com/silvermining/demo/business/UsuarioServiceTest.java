@@ -1,8 +1,7 @@
 package com.silvermining.demo.business;
 
 import com.silvermining.demo.enums.ModuloEnum;
-import com.silvermining.demo.strategy.ModuloFactory;
-import com.silvermining.demo.strategy.ServiceManager;
+import com.silvermining.demo.business.strategy.factory.ModuloFactory;
 import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.junit.Assert;
 import org.junit.Ignore;

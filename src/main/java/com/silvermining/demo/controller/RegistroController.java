@@ -1,11 +1,10 @@
 package com.silvermining.demo.controller;
 
-import com.silvermining.demo.business.UsuarioService;
+import com.silvermining.demo.business.strategy.UsuarioService;
 import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
