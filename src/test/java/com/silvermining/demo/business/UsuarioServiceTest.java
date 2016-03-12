@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * Created by pooldolorier on 07/03/16.
  */
@@ -45,6 +47,42 @@ public class UsuarioServiceTest {
             Assert.fail();
         }
     }
+
+    @Test
+    @Ignore
+    public void getAllUserPorModulo() {
+        try{
+            List<UsuarioVO> usuarioVOs =
+                    moduloFactory.getUsuarioService(ModuloEnum.USUARIO)
+                    .getAllUsers();
+            Assert.assertTrue(!usuarioVOs.isEmpty());
+            for(UsuarioVO usuarioVO : usuarioVOs) {
+                System.out.println("UsuarioVO :: " + usuarioVO.getNombre());
+            }
+        } catch(Exception oO) {
+            oO.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void getAllUsersPorModuloMayor() {
+        try {
+            List<UsuarioVO> usuarioVOs =
+                    moduloFactory.getUsuarioService(ModuloEnum.USUARIO_MAYOR)
+                            .getAllUsers();
+            Assert.assertTrue(!usuarioVOs.isEmpty());
+            for(UsuarioVO usuarioVO : usuarioVOs ) {
+                System.out.println(" usuario mayor :: " + usuarioVO.getNombre()
+                + ", profesion :: " + usuarioVO.getProfesion());
+            }
+        } catch (Exception oO) {
+            oO.printStackTrace();
+            Assert.fail();
+        }
+
+    }
+
 
 
 }

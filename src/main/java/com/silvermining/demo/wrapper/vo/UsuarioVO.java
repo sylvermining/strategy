@@ -1,8 +1,14 @@
 package com.silvermining.demo.wrapper.vo;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+
 /**
  * Created by dolorierp on 07/03/16.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include = Inclusion.NON_NULL)
 public class UsuarioVO {
 
     private Long id;

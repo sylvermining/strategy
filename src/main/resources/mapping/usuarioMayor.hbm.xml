@@ -14,11 +14,11 @@
             <column name="PROFESION" />
         </property>
         <many-to-one name="usuario" class="com.silvermining.demo.entity.Usuario"
-                     fetch="select">
+                     fetch="select" lazy="false">
             <column name="USERID" not-null="true" />
         </many-to-one>
         <set name="listaPerfiles" table="PERFIL"
-             inverse="false" lazy="true" fetch="select" cascade="all">
+             inverse="false" lazy="false" fetch="select" cascade="all">
             <key>
                 <column name="USUARIOMAYORID" not-null="true" />
             </key>

@@ -7,6 +7,10 @@ import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by dolorierp on 07/03/16.
  */
@@ -35,6 +39,25 @@ public class UsuarioSchema1ServiceImpl
                 .nombre(usuario.getNombre())
                 .builder();
         return usuarioVO;
+    }
+
+    @Override
+    public List<UsuarioVO> getAllUsers() {
+        List<Usuario> usuarios =
+                usuarioDAO.getAll();
+        List<UsuarioVO> usuarioVOs =
+                new ArrayList<UsuarioVO>();
+        Iterator<Usuario> usuarioIterator =
+                usuarios.iterator();
+        while(usuarioIterator.hasNext()) {
+            Usuario usuario = usuarioIterator.next();
+            UsuarioVO usuarioVO = new UsuarioVO.UsuarioVOBuilder()
+                    .nombre(usuario.getNombre())
+                    .id(usuario.getId())
+                    .builder();
+            usuarioVOs.add(usuarioVO);
+        }
+        return usuarioVOs;
     }
 
 }

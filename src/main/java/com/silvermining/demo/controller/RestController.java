@@ -1,11 +1,15 @@
 package com.silvermining.demo.controller;
 
 import com.silvermining.demo.business.MaestroService;
+import com.silvermining.demo.business.strategy.factory.ModuloFactory;
 import com.silvermining.demo.entity.Menu;
+import com.silvermining.demo.enums.ModuloEnum;
+import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,12 +29,27 @@ public class RestController {
     @Autowired
     private MaestroService maestroService;
 
+    @Autowired
+    private ModuloFactory moduloFactory;
+
     @RequestMapping(value = "/menulist", method = RequestMethod.GET,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Menu> getMenuLista() {
         return maestroService.getMenuLista();
     }
+
+    @RequestMapping(value = "/usuarios/{modulo}", method = RequestMethod.GET,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<UsuarioVO> getAllUsuariosPorModulo(
+            @PathVariable("modulo") String modulo) {
+        ModuloEnum moduloEnum = ModuloEnum.getModuloPorCodigo(modulo);
+        List<UsuarioVO> usuarioVOs = moduloFactory.getUsuarioService(moduloEnum)
+                .getAllUsers();
+        return usuarioVOs;
+    }
+
 
 
     /*@Autowired
@@ -50,6 +69,7 @@ public class RestController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST,
     consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+
     public boolean login(@PathVariable("usuario") String usuario,
                          @PathVariable("password") String password,
                          @PathVariable("repeatPassword") String repeatPassword) {

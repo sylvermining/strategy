@@ -8,6 +8,10 @@ import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by dolorierp on 07/03/16.
  */
@@ -41,6 +45,26 @@ public class UsuarioSchema2ServiceImpl
                 .profesion(usuario.getProfesion())
                 .builder();
         return usuarioVO;
+    }
+
+    @Autowired
+    public List<UsuarioVO> getAllUsers() {
+        List<UsuarioMayor> usuarios = usuarioMayorDAO.getAll();
+        List<UsuarioVO> usuarioVOs = new ArrayList<UsuarioVO>();
+        Iterator<UsuarioMayor> usuarioMayorIterator =
+                usuarios.iterator();
+        while(usuarioMayorIterator.hasNext()) {
+            UsuarioMayor usuarioMayor =
+                    usuarioMayorIterator.next();
+            UsuarioVO usuarioVO = new UsuarioVO
+                    .UsuarioVOBuilder()
+                    .id(usuarioMayor.getUsuario().getId())
+                    .nombre(usuarioMayor.getUsuario().getNombre())
+                    .profesion(usuarioMayor.getProfesion())
+                    .builder();
+            usuarioVOs.add(usuarioVO);
+        }
+        return usuarioVOs;
     }
 
 }

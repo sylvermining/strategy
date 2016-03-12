@@ -5,7 +5,7 @@ package com.silvermining.demo.enums;
  */
 public enum ModuloEnum {
 
-    USUARIO("U","usuario"),
+    USUARIO("UU","usuario"),
     USUARIO_MAYOR("UM", "usuario mayor");
 
     private String codigo;
@@ -26,7 +26,7 @@ public enum ModuloEnum {
 
     public static ModuloEnum getModuloPorCodigo(String moduloCode) {
         for(ModuloEnum modulo : ModuloEnum.values()) {
-            if(modulo.getCodigo().equals(moduloCode)) {
+            if(modulo.getCodigo().equalsIgnoreCase(moduloCode)) {
                 return modulo;
             }
         }
