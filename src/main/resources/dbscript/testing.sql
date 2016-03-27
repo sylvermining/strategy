@@ -2,7 +2,13 @@
 CREATE USER TESTING IDENTIFIED BY TESTING;
 grant all privileges to TESTING;
 
+CREATE USER TESTING_2 IDENTIFIED BY TESTING_2;
+grant all privileges to TESTING_2;
+
 ALTER USER system IDENTIFIED BY system;
+grant all privileges on TESTING.usuario to TESTING_2; --from system user.
+grant all privileges on TESTING.PERFIL to TESTING_2; --from system user.
+
 
 DROP TABLE TESTING.usuario CASCADE CONSTRAINTS;
 DROP TABLE TESTING.usuario_mayor CASCADE CONSTRAINTS;

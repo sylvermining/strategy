@@ -1,5 +1,6 @@
 package com.silvermining.demo.wrapper.vo;
 
+import com.silvermining.demo.entity.Usuario;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
@@ -15,6 +16,9 @@ public class UsuarioVO {
     private String nombre;
     private String password;
     private String profesion;
+
+    //new attributes POC
+    private Usuario usuario;
 
     public UsuarioVO() {}
     public UsuarioVO(UsuarioVOBuilder builder) {
@@ -54,6 +58,14 @@ public class UsuarioVO {
 
     public void setProfesion(String profesion) {
         this.profesion = profesion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

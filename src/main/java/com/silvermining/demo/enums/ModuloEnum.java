@@ -6,6 +6,7 @@ package com.silvermining.demo.enums;
 public enum ModuloEnum {
 
     USUARIO("UU","usuario"),
+    USUARIOs("Uc","usuario"),
     USUARIO_MAYOR("UM", "usuario mayor");
 
     private String codigo;

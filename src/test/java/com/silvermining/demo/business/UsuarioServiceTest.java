@@ -42,6 +42,7 @@ public class UsuarioServiceTest {
         try {
             UsuarioVO usuarioVO = moduloFactory.getUsuarioService(ModuloEnum.USUARIO_MAYOR).getUsuario("dolorierp");
             Assert.assertNotNull(usuarioVO);
+            System.out.println(usuarioVO.getProfesion());
         } catch (Exception oO) {
             oO.printStackTrace();
             Assert.fail();
@@ -66,6 +67,7 @@ public class UsuarioServiceTest {
     }
 
     @Test
+		@Ignore
     public void getAllUsersPorModuloMayor() {
         try {
             List<UsuarioVO> usuarioVOs =

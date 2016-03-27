@@ -29,7 +29,7 @@
         <property name="hibernateTemplate" ref="hibernateTemplate" />
     </bean>
 
-    <bean id="UsuarioMayorDAO" class="com.silvermining.demo.dao.impl.UsuarioMayorDAOImpl">
+    <!--<bean id="UsuarioMayorDAO" class="com.silvermining.demo.dao.impl.UsuarioMayorDAOImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate" />
-    </bean>
+    </bean>-->
 </beans>

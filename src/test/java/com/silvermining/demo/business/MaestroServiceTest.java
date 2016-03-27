@@ -1,6 +1,7 @@
 package com.silvermining.demo.business;
 
 import com.silvermining.demo.entity.Menu;
+import com.silvermining.demo.wrapper.vo.UsuarioVO;
 import junit.framework.Assert;
 import org.apache.log4j.Logger;
 import org.junit.Ignore;
@@ -31,6 +32,43 @@ public class MaestroServiceTest {
             List<Menu> menuLista = maestroService.getMenuLista();
             Assert.assertTrue(!menuLista.isEmpty());
             LOGGER.info("menu lista size :: " + menuLista.size());
+        } catch(Exception oO) {
+            oO.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+    @Ignore
+    public void insertUsuarioMayorTest() {
+        try {
+            UsuarioVO usuarioVO =
+                    new UsuarioVO.UsuarioVOBuilder()
+                    .nombre("Lincon")
+                    .password("1a2b3c4d")
+                    .profesion("president")
+                    .builder();
+            UsuarioVO userVO = maestroService.insertUsuario(usuarioVO);
+            maestroService.insertUsuarioMayor(userVO);
+            Assert.assertNotNull(userVO.getId());
+        } catch(Exception oO) {
+            oO.printStackTrace();
+            Assert.fail();
+        }
+    }
+
+    @Test
+		@Ignore
+    public void insertUsuarioAndUsuarioMayor() {
+        try {
+            UsuarioVO usuarioVO =
+                    new UsuarioVO.UsuarioVOBuilder()
+                            .nombre("Lincon")
+                            .password("1a2b3c4d")
+                            .profesion("president")
+                            .builder();
+            UsuarioVO userVO = maestroService.insertUsuarioAndUsuarioMayor(usuarioVO);
+            Assert.assertNotNull(userVO.getId());
         } catch(Exception oO) {
             oO.printStackTrace();
             Assert.fail();

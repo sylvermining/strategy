@@ -2,6 +2,7 @@ package com.silvermining.demo.business;
 
 import com.silvermining.demo.entity.Menu;
 import com.silvermining.demo.wrapper.vo.MenuVO;
+import com.silvermining.demo.wrapper.vo.UsuarioVO;
 
 import java.util.List;
 
@@ -11,4 +12,10 @@ import java.util.List;
 public interface MaestroService {
 
     List<Menu> getMenuLista();
+
+    void insertUsuarioMayor(UsuarioVO usuarioVO);
+
+    UsuarioVO insertUsuario(UsuarioVO usuarioVO);
+
+    UsuarioVO insertUsuarioAndUsuarioMayor(UsuarioVO usuarioVO);
 }

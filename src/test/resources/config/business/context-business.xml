@@ -12,15 +12,20 @@
        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
        ">
 
-    <import resource="../orm/context-dao.xml"></import>
+    <context:component-scan base-package="com.silvermining.demo.business" />
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <import resource="context-business-tx.xml"></import>
+
+    <!--<import resource="../orm/context-dao.xml"></import>-->
+    <!--<import resource="../orm2/context-dao.xml"></import>-->
+
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
-    </bean>
+    </bean>-->
 
-    <context:component-scan base-package="com.silvermining.demo.business" />
+
 
     <bean id="usuarioServiceManager" class="com.silvermining.demo.business.strategy.factory.ServiceManager">
         <property name="usuarioService" ref="usuarioSchema1ServiceImpl"></property>

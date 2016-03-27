@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.silvermining.demo.entity.UsuarioMayor"
-           table="USUARIO_MAYOR" schema="TESTING">
+           table="USUARIO_MAYOR" schema="TESTING_2">
         <id name="id" type="java.lang.Long">
             <column name="ID" scale="0" />
             <generator class="sequence">
@@ -45,7 +45,7 @@
                u.NAME AS {usuario.nombre},
                u.PASSWORD AS {usuario.password}
             FROM
-                usuario_mayor um
+                TESTING_2.usuario_mayor um
             JOIN
                 usuario u ON u.id = um.userid
             WHERE
